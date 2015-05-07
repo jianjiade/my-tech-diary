@@ -46,3 +46,36 @@ foo(); // a
 接下来我们可以看到当调用foo()时，`this.a`被解析成了全局变量a。为什么？因为在本例中，函数调用时应用了`this`的默认绑定，因此`this`指向全局对象。
 那么我们怎么知道这里应用了`默认绑定`呢？可以通过分析调用位置来看看foo()是如何调用的。在代码中，foo()是直接使用不带任何修饰的函数引用进行调用的，因此只能使用`默认绑定`,无法应用其他规则。
 如果使用严格模式`strict mode`，那么全局对象将无法使用默认绑定，因此`this`	会绑定到`undefinded`:
+<pre>
+function foo () {
+	"use strict";
+	console.log(this.a);
+}
+var a = 2;
+foo();//TypeError: this is undefined
+</pre>
+
+这里有一个微妙但是非常重要的细节，虽然this的绑定规则完全取决于调用位置，但是只有foo()运行在非strict mode下时，默认绑定才能绑定到全局对象；严格模式下与foo()的调用位置无关；
+<pre>
+function foo() {
+console.log(this.a);
+}
+var a = 2;
+(function () {
+"use strict";
+foo();
+})();
+</pre>
+####2.2.2 隐式绑定
+另一条需要考虑的规则是调用位置是否有上下文对象，或者说是否被某个对象拥有或者包含，不过这种说法可能会导致一些误导。
+思考下面的代码：
+<pre>
+function foo () {
+console.log(this.a);
+}
+var obj = {
+a:1,
+foo:foo
+}
+obj.foo();
+</pre>
