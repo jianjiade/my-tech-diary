@@ -1,0 +1,4 @@
+
+//entry.js
+
+require('./module');
