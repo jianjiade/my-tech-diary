@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>监控图表</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="css/base.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
+</head>
+<body>
+<section id="charts" class="clearfix">
+  <div class="left fl">
+    <div class="left-top">
+      <div class="inner-left fl">
+        <div class="total">
+          <em class="title"><dfn>10.2</dfn>总成交金额</em>
+          <em class="datenow">12:01:06</em>
+        </div>
+        <div class="totalnum">
+          <dfn>¥</dfn>
+          <em>1</em>
+          <em>2</em>
+          <em>3</em>
+          <dfn>,</dfn>
+          <em>4</em>
+          <em>5</em>
+          <em>6</em>
+          <dfn>,</dfn>
+          <em>7</em>
+          <em>8</em>
+          <em>9</em>
+        </div>
+        <div class="info">
+          <p>通知消息：截至中午12点销售额突破1000万！</p>
+        </div>
+      </div>
+      <div class="inner-right fr">
+        <div class="lastmintotal">
+          <p>上一分钟成交金额</p>
+          <div class="totalstring">
+            <dfn>¥</dfn>
+            <span>163,009</span>
+          </div>
+        </div>
+        <div class="totallist fl">
+          <p>总成交单量</p>
+          <span>233,790</span>
+        </div>
+        <div class="totalticket fr">
+          <p>总成交票量</p>
+          <span>233,790</span>
+        </div>
+      </div>
+    </div>
+    <div class="left-bottom">
+      <div class="linepic" id="main" style="height:382px"></div>
+    </div>
+  </div>
+
+  <div class="right fr">
+    <div class="pie">
+      <div id="pie" style="height:300px;"></div>
+    </div>
+    <div class="hotmap">
+      <div id="hotmap" style="height: 311px; width:243px;"></div>
+    </div>
+  </div>
+</section>
+</body>
+<script src="js/echarts-all.js"></script>
+<script src="js/dark.js"></script>
+<script src="js/index.js"></script>
+</html>

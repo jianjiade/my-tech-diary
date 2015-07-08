@@ -1,0 +1,175 @@
+.fl{
+  display: inline;
+  float: left;
+}
+
+.fr{
+  display: inline;
+  float: right;
+}
+
+html,
+body{
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  color: #fff;
+}
+
+#charts{
+  width: 1350px;
+  margin: auto;
+  background: #000;
+  /*padding-top: 1px;*/
+}
+.left{
+  width: 82%;
+}
+
+.left-top{
+  width: 100%;
+  height: 234px;
+}
+
+.inner-left{
+  width: 78.04%;
+  height: 234px;
+  /*padding-top: 1px;*/
+}
+.total{
+  width: 100%;
+  position: relative;
+  /*border: 1px solid #c0c0c0;*/
+}
+
+.title,
+.datenow{
+  font: 24px/1.5 "\5FAE\x8F6F\6B63\9ED1\4F53";
+}
+
+.title{
+  position: absolute;
+  top: 22px;
+  left: 35px;
+}
+.datenow{
+  position: absolute;
+  top: 22px;
+  right: 21px;
+}
+.totalnum{
+  position: relative;
+  padding-left: 95px;
+  margin-top: 65px;
+  margin-bottom: 26px;
+
+}
+.totalnum em{
+  display: inline-block;
+  width: 65px;
+  height: 93px;
+  border-radius: 12px;
+  background: #2370ba;
+  font: 70px/93px Helvetica;
+  text-align: center;
+}
+.totalnum dfn{
+  display: inline-block;
+  font: 60px/93px Arial;
+}
+.totalnum dfn:first-child{
+  border-radius: 12px;
+  background: #2370ba;
+  position: absolute;
+  left: 41px;
+  top: 0;
+  font: 24px/39px Arial !important;;
+  font-style: normal;
+  width: 38px;
+  height: 39px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.info{
+  width: 100%;
+  border-top: 1px solid #c0c0c0;
+
+}
+.info p{
+  padding-left: 10px;
+  font: 25px/43px "\5FAE\x8F6F\6B63\9ED1\4F53";
+}
+
+.inner-right{
+  width: 241px;
+  height: 234px;
+  border: 1px solid #efefef;
+  border-top: none;
+  border-bottom: none;
+}
+
+.lastmintotal{
+  width: 100%;
+  height: 127px;
+  border-bottom: 1px solid #efefef;
+  padding-top: 1px;
+}
+.lastmintotal p{
+  /*width: 100%;*/
+  padding-left: 10px;
+  font: 24px/1.5 "\5FAE\8F6F\96C5\9ED1";
+  color: #a05b34;
+  margin-top: 20px;
+}
+
+.totalstring{
+  text-align: center;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.totallist{
+  width: 119px;
+  height: 101px;
+  text-align: center;
+}
+.totalticket{
+  width: 118px;
+  height: 105px;
+  text-align: center;
+}
+.totallist{
+  /*border: 1px solid #efefef;*/
+  font: 20px/1.5 "\5FAE\8F6F\96C5\9ED1";
+}
+.totalticket{
+  border-left: 1px solid #efefef;
+  /*border-bottom: 1px solid #efefef;*/
+  font: 20px/1.5 "\5FAE\8F6F\96C5\9ED1";
+}
+
+.totallist p,
+.totalticket p{
+  margin-top: 18px;
+}
+
+.left-bottom{
+  width: 1105px;
+  height: 380px;
+  border: 1px solid #efefef;
+}
+
+.right{
+  width: 243px;
+  height: 616px;
+
+}
+
+.pie{
+  height: 301px;
+  border-bottom: 1px solid #efefef;
+}
+.hotmap{
+  height: 311px;
+}
