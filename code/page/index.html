@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery和CSS3超酷3D翻牌式倒计数特效|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" type="text/css" href="css/countdown.css">
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="htmleaf-container">
+		<div class="htmleaf-content bgcolor-8" id="count">
+			<script id="count-template" type="text/template">
+			 <div class="count">
+				 <span class="current top <%= currentSize %>"><%= time %></span>
+				 <span class="next top <%= nextSize %>"><%= nextTime %></span>
+				 <span class="current bottom <%= currentSize %>"><%= time %></span>
+				 <span class="next bottom <%= nextSize %>"><%= nextTime %></span>
+			 </div>
+			</script>
+		</div>
+		
+	</div>
+	
+	<script src='js/underscore-1.5.2-min.js'></script>
+	<script src='js/jquery-1.11.3.js'></script>
+	<script>
+	Countdown = function () {
+	    _(this).bindAll('update', 'executeAnimation', 'finishAnimation');
+	    this.setVars.apply(this, arguments);
+	    this.update();
+	    this.setData();
+	};
+	Countdown.prototype = {
+	    duration: 1000,
+	    setVars: function (time, el, template) {
+	        this.max = time;
+	        this.time = time;
+	        this.el = el;
+	        this.template = _(template.innerHTML).template();
+	        this.delta = -1;
+	    },
+	    update: function () {
+	        this.checkTime();
+	        this.setSizes();
+	        this.setupAnimation();
+	        _(this.executeAnimation).delay(20);
+	        _(this.finishAnimation).delay(this.duration * 0.9);
+	        _(this.update).delay(this.duration);
+	    },
+	    checkTime: function () {
+	        this.time += this.delta;
+	        if (this.time === 0)
+	            this.delta = 1;
+	        if (this.time === this.max)
+	            this.delta = -1;
+	        this.delta === 1 ? this.toggleDirection('up', 'down') : this.toggleDirection('down', 'up');
+	        this.nextTime = this.time + this.delta;
+	    },
+	    toggleDirection: function (add, remove) {
+	    	for(var i = 0; i < this.el.length; i++){
+	    		this.el[i].classList.add(add);
+	        	this.el[i].classList.remove(remove);
+	    	}
+	    },
+	    setSizes: function () {
+	        this.currentSize = this.getSize(this.time);
+	        this.nextSize = this.getSize(this.nextTime);
+	    },
+	    getSize: function (time) {
+	        return time > 9 ? 'small' : '';
+	    },
+	    setupAnimation: function () {
+	    	for(var i = 0; i < this.el.length; i++){
+	    		this.el[i].innerHTML = this.template(this);
+	        	this.el[i].classList.remove('changed');
+	    	}
+	    },
+	    executeAnimation: function () {
+	    	for(var i = 0; i < this.el.length; i++){
+	    		this.el[i].classList.add('changing');
+	    	}
+	    },
+	    finishAnimation: function () {
+	    	for(var i = 0; i < this.el.length; i++){
+	    		this.el[i].classList.add('changed');
+	        	this.el[i].classList.remove('changing');
+	    	}
+	    },
+	    setData: function () {
+	    	this.data = {
+	    		current: '123456789',
+	    		previous:'852741963'
+	    	}
+	    },
+	    toArraylist: function () {
+	    	this.currentlist = this.handledata(this.data.current).split("");
+	    	this.previouslist = this.handledata(this.data.previous).split("");
+	    },
+	    handledata: function (str) {
+	    	var len = 9 - str.length;
+	    	var stringzero = '';
+	    	for(var i = 0; i < len; i ++) {
+	    		stringzero += '0';
+	    	}
+	    	str = stringzero + str;
+	    	return str;
+	    }
+	};
+	new Countdown(100, $('#count'), document.querySelector('#count-template'));
+	</script>
+</body>
+</html>
