@@ -3,33 +3,6 @@
     
 var myChart = echarts.init(document.getElementById('main'), theme); 
                 
-// var option = {
-//   tooltip: {
-//       show: true
-//   },
-//   legend: {
-//       data:['销量']
-//   },
-//   xAxis : [
-//       {
-//           type : 'category',
-//           data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-//       }
-//   ],
-//   yAxis : [
-//       {
-//           type : 'value'
-//       }
-//   ],
-//   series : [
-//       {
-//           "name":"销量",
-//           "type":"line",
-//           "data":[5, 20, 40, 10, 10, 20]
-//       }
-//   ]
-// };
-
 var option = {
   title:{
     text:'动态数据',
@@ -174,9 +147,7 @@ timeTicket = setInterval(function () {
         axisData  // 坐标轴标签
       ]
     ]);
-},1000)
-
-
+},1000);
 
 var myPieChart = echarts.init(document.getElementById('pie'), theme);
 var pieOption = {
@@ -490,3 +461,120 @@ var mapOption = {
 };
 
 myMapChart.setOption(mapOption);
+
+/**
+
+*/
+Countdown = function () {
+    _(this).bindAll('update', 'executeAnimation', 'finishAnimation');
+    this.setVars.apply(this, arguments);
+    this.update();
+    this.setData();
+};
+Countdown.prototype = {
+    duration: 1000,
+    setVars: function (time, el, template) {
+        this.max = time;
+        this.time = time;
+        this.el = el;
+        this.template = _(template.innerHTML).template();
+        this.delta = -1;
+
+        this.data = {
+            current: '0',
+            previous: '0'
+        };
+    },
+    update: function () {
+        this.toArraylist();
+        // this.checkTime();?
+        // this.setSizes();
+        this.setupAnimation();
+        _(this.executeAnimation).delay(20);
+        _(this.finishAnimation).delay(this.duration * 0.9);
+        _(this.update).delay(this.duration);
+    },
+    checkTime: function () {
+        this.time += this.delta;
+        if (this.time === 0)
+            this.delta = 1;
+        if (this.time === this.max)
+            this.delta = -1;
+        this.delta === 1 ? this.toggleDirection('up', 'down') : this.toggleDirection('down', 'up');
+        this.nextTime = this.time + this.delta;
+    },
+    toggleDirection: function (add, remove) {
+        for(var i = 0; i < this.el.length; i++){
+            this.el[i].classList.add(add);
+            this.el[i].classList.remove(remove);
+        }
+    },
+    setSizes: function () {
+        this.currentSize = this.getSize(this.time);
+        this.nextSize = this.getSize(this.nextTime);
+    },
+    getSize: function (time) {
+        return time > 9 ? 'small' : '';
+    },
+    setupAnimation: function () {
+        // for(var i = 0; i < this.el.length; i++){
+        //  this.el[i].innerHTML = this.template(this);
+     //     this.el[i].classList.remove('changed');
+        // }
+        var html = '';
+        for(var i = 0; i < this.arraylist.length; i ++){
+            html += this.template(this.arraylist[i]);
+        }
+        this.el[0].innerHTML = html;
+    },
+    executeAnimation: function () {
+        // this.el.classList.add('changing');
+        $(this.el).find('.count').addClass('changing');
+    },
+    finishAnimation: function () {
+        // for(var i = 0; i < this.el.length; i++){
+        //  this.el.classList.add('changed');
+     //     this.el.classList.remove('changing');
+        // }
+
+        $(this.el).find('.count').addClass('changed');
+        $(this.el).find('.count').removeClass('changing');
+    },
+    setData: function () {
+        // this.data = {
+        //     // current: '0',
+        //     // previous: 
+        // };
+        this.data.tmp = this.data.previous;
+        // this.data.current = Math.floor(Math.random()*1000000000);
+        this.data.current = this.data.previous;
+        this.data.previous = Math.floor(Math.random()*1000000000);
+
+    },
+    toArraylist: function () {
+        this.setData();
+        
+        this.arraylist = [];
+        this.currentlist = this.handledata(this.data.current).split("");
+        this.nextlist = this.handledata(this.data.previous).split("");
+        for(var i = 0; i < this.currentlist.length; i++){
+            var obj = {};
+            obj.time = this.currentlist[i];
+            obj.currentSize = '';
+            obj.nextSize = '';
+            obj.nextTime = this.nextlist[i];
+            this.arraylist.push(obj);
+        }
+    },
+    handledata: function (str) {
+        str = str.toString();
+        var len = 9 - str.length;
+        var stringzero = '';
+        for(var i = 0; i < len; i ++) {
+            stringzero += '0';
+        }
+        str = stringzero + str;
+        return str;
+    }
+};
+new Countdown(100, $('#count'), document.querySelector('#count-template'));

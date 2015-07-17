@@ -5,8 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>jQuery和CSS3超酷3D翻牌式倒计数特效|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
-	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-	<link rel="stylesheet" type="text/css" href="css/default.css">
+
 	<link rel="stylesheet" type="text/css" href="css/countdown.css">
 	<!--[if IE]>
 		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
@@ -16,7 +15,7 @@
 	<div class="htmleaf-container">
 		<div class="htmleaf-content bgcolor-8" id="count">
 			<script id="count-template" type="text/template">
-			 <div class="count">
+			 <div class="count up">
 				 <span class="current top <%= currentSize %>"><%= time %></span>
 				 <span class="next top <%= nextSize %>"><%= nextTime %></span>
 				 <span class="current bottom <%= currentSize %>"><%= time %></span>
@@ -24,7 +23,6 @@
 			 </div>
 			</script>
 		</div>
-		
 	</div>
 	
 	<script src='js/underscore-1.5.2-min.js'></script>
@@ -46,8 +44,9 @@
 	        this.delta = -1;
 	    },
 	    update: function () {
-	        this.checkTime();
-	        this.setSizes();
+	    	this.toArraylist();
+	        // this.checkTime();?
+	        // this.setSizes();
 	        this.setupAnimation();
 	        _(this.executeAnimation).delay(20);
 	        _(this.finishAnimation).delay(this.duration * 0.9);
@@ -76,21 +75,28 @@
 	        return time > 9 ? 'small' : '';
 	    },
 	    setupAnimation: function () {
-	    	for(var i = 0; i < this.el.length; i++){
-	    		this.el[i].innerHTML = this.template(this);
-	        	this.el[i].classList.remove('changed');
+	    	// for(var i = 0; i < this.el.length; i++){
+	    	// 	this.el[i].innerHTML = this.template(this);
+	     //    	this.el[i].classList.remove('changed');
+	    	// }
+	    	var html = '';
+	    	for(var i = 0; i < this.arraylist.length; i ++){
+	    		html += this.template(this.arraylist[i]);
 	    	}
+	    	this.el[0].innerHTML = html;
 	    },
 	    executeAnimation: function () {
-	    	for(var i = 0; i < this.el.length; i++){
-	    		this.el[i].classList.add('changing');
-	    	}
+	    	// this.el.classList.add('changing');
+	    	$(this.el).find('.count').addClass('changing');
 	    },
 	    finishAnimation: function () {
-	    	for(var i = 0; i < this.el.length; i++){
-	    		this.el[i].classList.add('changed');
-	        	this.el[i].classList.remove('changing');
-	    	}
+	    	// for(var i = 0; i < this.el.length; i++){
+	    	// 	this.el.classList.add('changed');
+	     //    	this.el.classList.remove('changing');
+	    	// }
+
+	    	$(this.el).find('.count').addClass('changed');
+	    	$(this.el).find('.count').removeClass('changing');
 	    },
 	    setData: function () {
 	    	this.data = {
@@ -99,8 +105,19 @@
 	    	}
 	    },
 	    toArraylist: function () {
+	    	this.setData();
+	    	
+	    	this.arraylist = [];
 	    	this.currentlist = this.handledata(this.data.current).split("");
-	    	this.previouslist = this.handledata(this.data.previous).split("");
+	    	this.nextlist = this.handledata(this.data.previous).split("");
+	    	for(var i = 0; i < this.currentlist.length; i++){
+	    		var obj = {};
+	    		obj.time = this.currentlist[i];
+	    		obj.currentSize = '';
+	    		obj.nextSize = '';
+	    		obj.nextTime = this.nextlist[i];
+	    		this.arraylist.push(obj);
+	    	}
 	    },
 	    handledata: function (str) {
 	    	var len = 9 - str.length;
