@@ -2,7 +2,7 @@
 
 var theme = {
     // 全图默认背景
-    backgroundColor: '#1b1b1b',
+    backgroundColor: '#000000',
 
     // 默认色板
     color: [

@@ -203,7 +203,7 @@ myPieChart.setOption(pieOption);
 var myMapChart = echarts.init(document.getElementById('hotmap'), theme);
 
 var mapOption = {
-    backgroundColor: '#1b1b1b',
+    backgroundColor: '#000000',
     color: ['gold','aqua','lime'],
     title : {
         show: false,
