@@ -8,6 +8,14 @@
 <meta name="keywords" content="">
 <link href="css/base.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
+<script id="count-template" type="text/template">
+   <div class="count up">
+     <span class="current top <%= currentSize %>"><%= time %></span>
+     <span class="next top <%= nextSize %>"><%= nextTime %></span>
+     <span class="current bottom <%= currentSize %>"><%= time %></span>
+     <span class="next bottom <%= nextSize %>"><%= nextTime %></span>
+   </div>
+</script>
 </head>
 <body>
 <section id="charts" class="clearfix">
@@ -20,17 +28,70 @@
         </div>
         <div class="totalnum">
           <dfn>¥</dfn>
-          <em>1</em>
-          <em>2</em>
-          <em>3</em>
-          <dfn>,</dfn>
-          <em>4</em>
-          <em>5</em>
-          <em>6</em>
-          <dfn>,</dfn>
-          <em>7</em>
-          <em>8</em>
-          <em>9</em>
+          <div class="htmleaf-content bgcolor-8" id="count">
+              <div class="count up changing">
+                 <span class="current top ">1</span>
+                 <span class="next top ">8</span>
+                 <span class="current bottom ">1</span>
+                 <span class="next bottom ">8</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">2</span>
+                 <span class="next top ">5</span>
+                 <span class="current bottom ">2</span>
+                 <span class="next bottom ">5</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">3</span>
+                 <span class="next top ">2</span>
+                 <span class="current bottom ">3</span>
+                 <span class="next bottom ">2</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">4</span>
+                 <span class="next top ">7</span>
+                 <span class="current bottom ">4</span>
+                 <span class="next bottom ">7</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">5</span>
+                 <span class="next top ">4</span>
+                 <span class="current bottom ">5</span>
+                 <span class="next bottom ">4</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">6</span>
+                 <span class="next top ">1</span>
+                 <span class="current bottom ">6</span>
+                 <span class="next bottom ">1</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">7</span>
+                 <span class="next top ">9</span>
+                 <span class="current bottom ">7</span>
+                 <span class="next bottom ">9</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">8</span>
+                 <span class="next top ">6</span>
+                 <span class="current bottom ">8</span>
+                 <span class="next bottom ">6</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">9</span>
+                 <span class="next top ">3</span>
+                 <span class="current bottom ">9</span>
+                 <span class="next bottom ">3</span>
+               </div>
+          </div>
         </div>
         <div class="info">
           <p>通知消息：截至中午12点销售额突破1000万！</p>
@@ -71,5 +132,9 @@
 </body>
 <script src="js/echarts-all.js"></script>
 <script src="js/dark.js"></script>
+<script src='js/underscore-1.5.2-min.js'></script>
+<script src='js/jquery-1.11.3.js'></script>
 <script src="js/index.js"></script>
+
+
 </html>
