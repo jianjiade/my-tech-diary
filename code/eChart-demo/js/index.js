@@ -116,38 +116,42 @@ var option = {
 // 为echarts对象加载数据 
 myChart.setOption(option); 
 
-var lastData = 11;
-var axisData;
-var timeTicket;
-clearInterval(timeTicket);            
-timeTicket = setInterval(function () {
-  lastData += Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1);
-  lastData = lastData.toFixed(1) - 0;
-  axisData = (new Date()).toLocaleTimeString().replace(/^\D*/, '');
 
-  myChart.addData([
-      [
-        0,
-        Math.round(Math.random()* 100000),
-        false,
-        false
-      ],
-      [
-        1,        // 系列索引
-        Math.round(Math.random()* 100000), // 新增数据
-        false,    // 新增数据是否从队列头部插入
-        false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
-        axisData  // 坐标轴标签
-      ],
-      [
-        2,        // 系列索引
-        Math.round(Math.random()* 100000), // 新增数据
-        false,    // 新增数据是否从队列头部插入
-        false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
-        axisData  // 坐标轴标签
-      ]
+var timeTicket;
+var lastData = 11;
+var randomnum;
+var axisData;
+clearInterval(timeTicket);
+timeTicket = setInterval(function (){
+    lastData += Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1);
+    lastData = lastData.toFixed(1) - 0;
+    randomnum = Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1)
+    axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+    
+    // 动态数据接口 addData
+    myChart.addData([
+        [
+            0,        // 系列索引
+            Math.round(Math.random() * 1000), // 新增数据
+            false,     // 新增数据是否从队列头部插入
+            false     // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+        ],
+        [
+            1,        // 系列索引
+            lastData, // 新增数据
+            false,    // 新增数据是否从队列头部插入
+            false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+            axisData  // 坐标轴标签
+        ],
+        [
+            2,        // 系列索引
+            randomnum, // 新增数据
+            false,    // 新增数据是否从队列头部插入
+            false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+            axisData  // 坐标轴标签
+          ]
     ]);
-},1000);
+}, 1000);
 
 var myPieChart = echarts.init(document.getElementById('pie'), theme);
 var pieOption = {
@@ -204,7 +208,7 @@ var myMapChart = echarts.init(document.getElementById('hotmap'), theme);
 
 var mapOption = {
     backgroundColor: '#000000',
-    color: ['gold','aqua','lime'],
+    color: ['red','yellow','green'],
     title : {
         show: false,
         text: '模拟迁徙',
@@ -244,7 +248,7 @@ var mapOption = {
         min : 0,
         max : 1000,
         calculable : true,
-        color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
+        color: ['red','yellow','green'],
         textStyle:{
             color:'#fff'
         }
@@ -428,7 +432,8 @@ var mapOption = {
             markPoint : {
                 symbol:'emptyCircle',
                 symbolSize : function (v){
-                    return 10 + v/100
+                    // return 10 + v/100
+                    return v;
                 },
                 effect : {
                     show: true,
@@ -443,17 +448,17 @@ var mapOption = {
                     }
                 },
                 data : [
-                    {name:'北京',value:1195},
-                    {name:'上海',value:995},
-                    {name:'广州',value:790},
-                    {name:'大连',value:880},
-                    {name:'南宁',value:970},
-                    {name:'南昌',value:560},
-                    {name:'拉萨',value:850},
-                    {name:'长春',value:340},
-                    {name:'包头',value:930},
-                    {name:'重庆',value:820},
-                    {name:'常州',value:410}
+                    {name:'北京',value:11},
+                    {name:'上海',value:8},
+                    {name:'广州',value:7},
+                    {name:'大连',value:6},
+                    {name:'南宁',value:5},
+                    {name:'南昌',value:4},
+                    {name:'拉萨',value:2},
+                    {name:'长春',value:2},
+                    {name:'包头',value:1},
+                    {name:'重庆',value:1},
+                    {name:'常州',value:1}
                 ]
             }
         }
