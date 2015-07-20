@@ -1,3 +1,5 @@
+/*2370ba*/
+
 .fl{
   display: inline;
   float: left;
@@ -200,7 +202,7 @@ body{
   .count{top:70%;left:30%}
 }
 .count span {
-  background: #202020;
+  background: #2370ba;
   color: #f8f8f8;
   display: block;
   font-size: 70px;
