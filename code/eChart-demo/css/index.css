@@ -94,6 +94,7 @@ body{
 }
 
 .info{
+  display: none;
   width: 100%;
   border-top: 1px solid #c0c0c0;
 

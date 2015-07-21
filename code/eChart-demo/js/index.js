@@ -432,12 +432,14 @@ var mapOption = {
             markPoint : {
                 symbol:'emptyCircle',
                 symbolSize : function (v){
-                    // return 10 + v/100
-                    return v;
+                    return v/1.5
+                    // return v;
                 },
                 effect : {
                     show: true,
-                    shadowBlur : 0
+                    shadowBlur : 1,
+                    scaleSize : 2
+                    // shadowColor: 'red',
                 },
                 itemStyle:{
                     normal:{
@@ -448,7 +450,7 @@ var mapOption = {
                     }
                 },
                 data : [
-                    {name:'北京',value:11},
+                    {name:'北京',value:10},
                     {name:'上海',value:8},
                     {name:'广州',value:7},
                     {name:'大连',value:6},
@@ -492,8 +494,6 @@ Countdown.prototype = {
     },
     update: function () {
         this.toArraylist();
-        // this.checkTime();?
-        // this.setSizes();
         this.setupAnimation();
         _(this.executeAnimation).delay(20);
         _(this.finishAnimation).delay(this.duration * 0.9);
@@ -522,10 +522,6 @@ Countdown.prototype = {
         return time > 9 ? 'small' : '';
     },
     setupAnimation: function () {
-        // for(var i = 0; i < this.el.length; i++){
-        //  this.el[i].innerHTML = this.template(this);
-     //     this.el[i].classList.remove('changed');
-        // }
         var html = '';
         for(var i = 0; i < this.arraylist.length; i ++){
             html += this.template(this.arraylist[i]);
@@ -537,19 +533,10 @@ Countdown.prototype = {
         $(this.el).find('.count').addClass('changing');
     },
     finishAnimation: function () {
-        // for(var i = 0; i < this.el.length; i++){
-        //  this.el.classList.add('changed');
-     //     this.el.classList.remove('changing');
-        // }
-
         $(this.el).find('.count').addClass('changed');
         $(this.el).find('.count').removeClass('changing');
     },
     setData: function () {
-        // this.data = {
-        //     // current: '0',
-        //     // previous: 
-        // };
         this.data.tmp = this.data.previous;
         // this.data.current = Math.floor(Math.random()*1000000000);
         this.data.current = this.data.previous;
