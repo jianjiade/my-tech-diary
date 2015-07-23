@@ -1,8 +1,22 @@
 
+$(function(){
+    var deplist = $('.deplist');
+    var charts =$('.charts');
+    deplist.bind('click', function(){
+
+        var thisindex = $(this).index();
+        deplist.removeClass('current');
+        $(this).addClass('current');
+        charts.hide();
+        charts.eq(thisindex).show();
+    })
+})
+
 
     
-var myChart = echarts.init(document.getElementById('main'), theme); 
-                
+var myChartALL = echarts.init(document.getElementById('mainALL'), theme); 
+var myChartTTD = echarts.init(document.getElementById('mainTTD'), theme); 
+var myChartTICKET = echarts.init(document.getElementById('mainTICKET'), theme);                 
 var option = {
   title:{
     text:'动态数据',
@@ -114,8 +128,9 @@ var option = {
 }
 
 // 为echarts对象加载数据 
-myChart.setOption(option); 
-
+myChartALL.setOption(option); 
+myChartTTD.setOption(option); 
+myChartTICKET.setOption(option); 
 
 var timeTicket;
 var lastData = 11;
@@ -129,7 +144,7 @@ timeTicket = setInterval(function (){
     axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
     
     // 动态数据接口 addData
-    myChart.addData([
+    myChartALL.addData([
         [
             0,        // 系列索引
             Math.round(Math.random() * 1000), // 新增数据
@@ -152,8 +167,69 @@ timeTicket = setInterval(function (){
           ]
     ]);
 }, 1000);
-
-var myPieChart = echarts.init(document.getElementById('pie'), theme);
+timeTicket = setInterval(function (){
+    lastData += Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1);
+    lastData = lastData.toFixed(1) - 0;
+    randomnum = Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1)
+    axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+    
+    // 动态数据接口 addData
+    myChartTTD.addData([
+        [
+            0,        // 系列索引
+            Math.round(Math.random() * 1000), // 新增数据
+            false,     // 新增数据是否从队列头部插入
+            false     // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+        ],
+        [
+            1,        // 系列索引
+            lastData, // 新增数据
+            false,    // 新增数据是否从队列头部插入
+            false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+            axisData  // 坐标轴标签
+        ],
+        [
+            2,        // 系列索引
+            randomnum, // 新增数据
+            false,    // 新增数据是否从队列头部插入
+            false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+            axisData  // 坐标轴标签
+          ]
+    ]);
+}, 1000);
+timeTicket = setInterval(function (){
+    lastData += Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1);
+    lastData = lastData.toFixed(1) - 0;
+    randomnum = Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1)
+    axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+    
+    // 动态数据接口 addData
+    myChartTICKET.addData([
+        [
+            0,        // 系列索引
+            Math.round(Math.random() * 1000), // 新增数据
+            false,     // 新增数据是否从队列头部插入
+            false     // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+        ],
+        [
+            1,        // 系列索引
+            lastData, // 新增数据
+            false,    // 新增数据是否从队列头部插入
+            false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+            axisData  // 坐标轴标签
+        ],
+        [
+            2,        // 系列索引
+            randomnum, // 新增数据
+            false,    // 新增数据是否从队列头部插入
+            false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+            axisData  // 坐标轴标签
+          ]
+    ]);
+}, 1000);
+var myPieChartALL = echarts.init(document.getElementById('pieALL'), theme);
+var myPieChartTTD = echarts.init(document.getElementById('pieTTD'), theme);
+var myPieChartTICKET = echarts.init(document.getElementById('pieTICKET'), theme);
 var pieOption = {
     title : {
         text: '无线占比'
@@ -202,10 +278,14 @@ var pieOption = {
         }
     ]
 };
-myPieChart.setOption(pieOption);
 
-var myMapChart = echarts.init(document.getElementById('hotmap'), theme);
+myPieChartALL.setOption(pieOption);
+myPieChartTTD.setOption(pieOption);
+myPieChartTICKET.setOption(pieOption);
 
+var myMapChartALL = echarts.init(document.getElementById('hotmapALL'), theme);
+var myMapChartTTD = echarts.init(document.getElementById('hotmapTTD'), theme);
+var myMapChartTICKET = echarts.init(document.getElementById('hotmapTICKET'), theme);
 var mapOption = {
     backgroundColor: '#000000',
     color: ['red','yellow','green'],
@@ -467,8 +547,9 @@ var mapOption = {
     ]
 };
 
-myMapChart.setOption(mapOption);
-
+myMapChartALL.setOption(mapOption);
+myMapChartTTD.setOption(mapOption);
+myMapChartTICKET.setOption(mapOption);
 /**
 
 */
@@ -569,4 +650,6 @@ Countdown.prototype = {
         return str;
     }
 };
-new Countdown(100, $('#count'), document.querySelector('#count-template'));
+new Countdown(100, $('#countALL'), document.querySelector('#count-template'));
+new Countdown(100, $('#countTTD'), document.querySelector('#count-template'));
+new Countdown(100, $('#countTICKET'), document.querySelector('#count-template'));

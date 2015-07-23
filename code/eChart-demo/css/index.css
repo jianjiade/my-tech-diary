@@ -1,5 +1,8 @@
 /*2370ba*/
 
+
+
+
 .fl{
   display: inline;
   float: left;
@@ -17,8 +20,27 @@ body{
   background: #fff;
   color: #fff;
 }
+.navlist{
+  width: 1350px;
+  margin: auto;
+  background: #000;
+}
 
-#charts{
+.deplist{
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  font: 20px/50px "微软雅黑";
+  color: #eee;
+  text-align: center;
+  text-decoration: none;
+}
+.navlist a:hover,
+.navlist .current{
+  background: #2370ba;
+}
+
+.charts{
   width: 1350px;
   margin: auto;
   background: #000;
