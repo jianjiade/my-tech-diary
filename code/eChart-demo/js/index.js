@@ -1,8 +1,22 @@
 
+$(function(){
+    var deplist = $('.deplist');
+    var charts =$('.charts');
+    deplist.bind('click', function(){
+
+        var thisindex = $(this).index();
+        deplist.removeClass('current');
+        $(this).addClass('current');
+        charts.hide();
+        charts.eq(thisindex).show();
+    })
+})
+
 
     
-var myChart = echarts.init(document.getElementById('main'), theme); 
-                
+var myChartALL = echarts.init(document.getElementById('mainALL'), theme); 
+var myChartTTD = echarts.init(document.getElementById('mainTTD'), theme); 
+var myChartTICKET = echarts.init(document.getElementById('mainTICKET'), theme);                 
 var option = {
   title:{
     text:'动态数据',
@@ -114,42 +128,108 @@ var option = {
 }
 
 // 为echarts对象加载数据 
-myChart.setOption(option); 
+myChartALL.setOption(option); 
+myChartTTD.setOption(option); 
+myChartTICKET.setOption(option); 
 
-var lastData = 11;
-var axisData;
 var timeTicket;
-clearInterval(timeTicket);            
-timeTicket = setInterval(function () {
-  lastData += Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1);
-  lastData = lastData.toFixed(1) - 0;
-  axisData = (new Date()).toLocaleTimeString().replace(/^\D*/, '');
-
-  myChart.addData([
-      [
-        0,
-        Math.round(Math.random()* 100000),
-        false,
-        false
-      ],
-      [
-        1,        // 系列索引
-        Math.round(Math.random()* 100000), // 新增数据
-        false,    // 新增数据是否从队列头部插入
-        false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
-        axisData  // 坐标轴标签
-      ],
-      [
-        2,        // 系列索引
-        Math.round(Math.random()* 100000), // 新增数据
-        false,    // 新增数据是否从队列头部插入
-        false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
-        axisData  // 坐标轴标签
-      ]
+var lastData = 11;
+var randomnum;
+var axisData;
+clearInterval(timeTicket);
+timeTicket = setInterval(function (){
+    lastData += Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1);
+    lastData = lastData.toFixed(1) - 0;
+    randomnum = Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1)
+    axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+    
+    // 动态数据接口 addData
+    myChartALL.addData([
+        [
+            0,        // 系列索引
+            Math.round(Math.random() * 1000), // 新增数据
+            false,     // 新增数据是否从队列头部插入
+            false     // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+        ],
+        [
+            1,        // 系列索引
+            lastData, // 新增数据
+            false,    // 新增数据是否从队列头部插入
+            false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+            axisData  // 坐标轴标签
+        ],
+        [
+            2,        // 系列索引
+            randomnum, // 新增数据
+            false,    // 新增数据是否从队列头部插入
+            false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+            axisData  // 坐标轴标签
+          ]
     ]);
-},1000);
-
-var myPieChart = echarts.init(document.getElementById('pie'), theme);
+}, 1000);
+timeTicket = setInterval(function (){
+    lastData += Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1);
+    lastData = lastData.toFixed(1) - 0;
+    randomnum = Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1)
+    axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+    
+    // 动态数据接口 addData
+    myChartTTD.addData([
+        [
+            0,        // 系列索引
+            Math.round(Math.random() * 1000), // 新增数据
+            false,     // 新增数据是否从队列头部插入
+            false     // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+        ],
+        [
+            1,        // 系列索引
+            lastData, // 新增数据
+            false,    // 新增数据是否从队列头部插入
+            false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+            axisData  // 坐标轴标签
+        ],
+        [
+            2,        // 系列索引
+            randomnum, // 新增数据
+            false,    // 新增数据是否从队列头部插入
+            false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+            axisData  // 坐标轴标签
+          ]
+    ]);
+}, 1000);
+timeTicket = setInterval(function (){
+    lastData += Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1);
+    lastData = lastData.toFixed(1) - 0;
+    randomnum = Math.random() * ((Math.round(Math.random() * 10) % 2) == 0 ? 1 : -1)
+    axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
+    
+    // 动态数据接口 addData
+    myChartTICKET.addData([
+        [
+            0,        // 系列索引
+            Math.round(Math.random() * 1000), // 新增数据
+            false,     // 新增数据是否从队列头部插入
+            false     // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+        ],
+        [
+            1,        // 系列索引
+            lastData, // 新增数据
+            false,    // 新增数据是否从队列头部插入
+            false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+            axisData  // 坐标轴标签
+        ],
+        [
+            2,        // 系列索引
+            randomnum, // 新增数据
+            false,    // 新增数据是否从队列头部插入
+            false,    // 是否增加队列长度，false则自定删除原有数据，队头插入删队尾，队尾插入删队头
+            axisData  // 坐标轴标签
+          ]
+    ]);
+}, 1000);
+var myPieChartALL = echarts.init(document.getElementById('pieALL'), theme);
+var myPieChartTTD = echarts.init(document.getElementById('pieTTD'), theme);
+var myPieChartTICKET = echarts.init(document.getElementById('pieTICKET'), theme);
 var pieOption = {
     title : {
         text: '无线占比'
@@ -198,13 +278,17 @@ var pieOption = {
         }
     ]
 };
-myPieChart.setOption(pieOption);
 
-var myMapChart = echarts.init(document.getElementById('hotmap'), theme);
+myPieChartALL.setOption(pieOption);
+myPieChartTTD.setOption(pieOption);
+myPieChartTICKET.setOption(pieOption);
 
+var myMapChartALL = echarts.init(document.getElementById('hotmapALL'), theme);
+var myMapChartTTD = echarts.init(document.getElementById('hotmapTTD'), theme);
+var myMapChartTICKET = echarts.init(document.getElementById('hotmapTICKET'), theme);
 var mapOption = {
     backgroundColor: '#000000',
-    color: ['gold','aqua','lime'],
+    color: ['red','yellow','green'],
     title : {
         show: false,
         text: '模拟迁徙',
@@ -244,7 +328,7 @@ var mapOption = {
         min : 0,
         max : 1000,
         calculable : true,
-        color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
+        color: ['red','yellow','green'],
         textStyle:{
             color:'#fff'
         }
@@ -428,11 +512,14 @@ var mapOption = {
             markPoint : {
                 symbol:'emptyCircle',
                 symbolSize : function (v){
-                    return 10 + v/100
+                    return v/1.5
+                    // return v;
                 },
                 effect : {
                     show: true,
-                    shadowBlur : 0
+                    shadowBlur : 1,
+                    scaleSize : 2
+                    // shadowColor: 'red',
                 },
                 itemStyle:{
                     normal:{
@@ -443,25 +530,26 @@ var mapOption = {
                     }
                 },
                 data : [
-                    {name:'北京',value:1195},
-                    {name:'上海',value:995},
-                    {name:'广州',value:790},
-                    {name:'大连',value:880},
-                    {name:'南宁',value:970},
-                    {name:'南昌',value:560},
-                    {name:'拉萨',value:850},
-                    {name:'长春',value:340},
-                    {name:'包头',value:930},
-                    {name:'重庆',value:820},
-                    {name:'常州',value:410}
+                    {name:'北京',value:10},
+                    {name:'上海',value:8},
+                    {name:'广州',value:7},
+                    {name:'大连',value:6},
+                    {name:'南宁',value:5},
+                    {name:'南昌',value:4},
+                    {name:'拉萨',value:2},
+                    {name:'长春',value:2},
+                    {name:'包头',value:1},
+                    {name:'重庆',value:1},
+                    {name:'常州',value:1}
                 ]
             }
         }
     ]
 };
 
-myMapChart.setOption(mapOption);
-
+myMapChartALL.setOption(mapOption);
+myMapChartTTD.setOption(mapOption);
+myMapChartTICKET.setOption(mapOption);
 /**
 
 */
@@ -487,8 +575,6 @@ Countdown.prototype = {
     },
     update: function () {
         this.toArraylist();
-        // this.checkTime();?
-        // this.setSizes();
         this.setupAnimation();
         _(this.executeAnimation).delay(20);
         _(this.finishAnimation).delay(this.duration * 0.9);
@@ -517,10 +603,6 @@ Countdown.prototype = {
         return time > 9 ? 'small' : '';
     },
     setupAnimation: function () {
-        // for(var i = 0; i < this.el.length; i++){
-        //  this.el[i].innerHTML = this.template(this);
-     //     this.el[i].classList.remove('changed');
-        // }
         var html = '';
         for(var i = 0; i < this.arraylist.length; i ++){
             html += this.template(this.arraylist[i]);
@@ -532,19 +614,10 @@ Countdown.prototype = {
         $(this.el).find('.count').addClass('changing');
     },
     finishAnimation: function () {
-        // for(var i = 0; i < this.el.length; i++){
-        //  this.el.classList.add('changed');
-     //     this.el.classList.remove('changing');
-        // }
-
         $(this.el).find('.count').addClass('changed');
         $(this.el).find('.count').removeClass('changing');
     },
     setData: function () {
-        // this.data = {
-        //     // current: '0',
-        //     // previous: 
-        // };
         this.data.tmp = this.data.previous;
         // this.data.current = Math.floor(Math.random()*1000000000);
         this.data.current = this.data.previous;
@@ -577,4 +650,6 @@ Countdown.prototype = {
         return str;
     }
 };
-new Countdown(100, $('#count'), document.querySelector('#count-template'));
+new Countdown(100, $('#countALL'), document.querySelector('#count-template'));
+new Countdown(100, $('#countTTD'), document.querySelector('#count-template'));
+new Countdown(100, $('#countTICKET'), document.querySelector('#count-template'));

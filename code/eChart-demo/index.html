@@ -18,7 +18,12 @@
 </script>
 </head>
 <body>
-<section id="charts" class="clearfix">
+<nav class="navlist clearfix">
+  <a href="javascript:;" class="current deplist">综合</a>
+  <a href="javascript:;" class="deplist">玩乐</a>
+  <a href="javascript:;" class="deplist">门票</a>
+</nav>
+<section id="chartsALL" class="charts  clearfix">
   <div class="left fl">
     <div class="left-top">
       <div class="inner-left fl">
@@ -28,7 +33,7 @@
         </div>
         <div class="totalnum">
           <dfn>¥</dfn>
-          <div class="htmleaf-content bgcolor-8" id="count">
+          <div class="htmleaf-content bgcolor-8" id="countALL">
               <div class="count up changing">
                  <span class="current top ">1</span>
                  <span class="next top ">8</span>
@@ -116,16 +121,235 @@
       </div>
     </div>
     <div class="left-bottom">
-      <div class="linepic" id="main" style="height:382px"></div>
+      <div class="main linepic" id="mainALL" style="height:382px; width:1105px;"></div>
     </div>
   </div>
-
   <div class="right fr">
     <div class="pie">
-      <div id="pie" style="height:300px;"></div>
+      <div id="pieALL" style="height:300px;"></div>
     </div>
     <div class="hotmap">
-      <div id="hotmap" style="height: 311px; width:243px;"></div>
+      <div id="hotmapALL" style="height: 311px; width:243px;"></div>
+    </div>
+  </div>
+</section>
+<section id="chartsTTD" class="charts none clearfix">
+  <div class="left fl">
+    <div class="left-top">
+      <div class="inner-left fl">
+        <div class="total">
+          <em class="title"><dfn>10.2</dfn>总成交金额</em>
+          <em class="datenow">12:01:06</em>
+        </div>
+        <div class="totalnum">
+          <dfn>¥</dfn>
+          <div class="htmleaf-content bgcolor-8" id="countTTD">
+              <div class="count up changing">
+                 <span class="current top ">1</span>
+                 <span class="next top ">8</span>
+                 <span class="current bottom ">1</span>
+                 <span class="next bottom ">8</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">2</span>
+                 <span class="next top ">5</span>
+                 <span class="current bottom ">2</span>
+                 <span class="next bottom ">5</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">3</span>
+                 <span class="next top ">2</span>
+                 <span class="current bottom ">3</span>
+                 <span class="next bottom ">2</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">4</span>
+                 <span class="next top ">7</span>
+                 <span class="current bottom ">4</span>
+                 <span class="next bottom ">7</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">5</span>
+                 <span class="next top ">4</span>
+                 <span class="current bottom ">5</span>
+                 <span class="next bottom ">4</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">6</span>
+                 <span class="next top ">1</span>
+                 <span class="current bottom ">6</span>
+                 <span class="next bottom ">1</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">7</span>
+                 <span class="next top ">9</span>
+                 <span class="current bottom ">7</span>
+                 <span class="next bottom ">9</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">8</span>
+                 <span class="next top ">6</span>
+                 <span class="current bottom ">8</span>
+                 <span class="next bottom ">6</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">9</span>
+                 <span class="next top ">3</span>
+                 <span class="current bottom ">9</span>
+                 <span class="next bottom ">3</span>
+               </div>
+          </div>
+        </div>
+        <div class="info">
+          <p>通知消息：截至中午12点销售额突破1000万！</p>
+        </div>
+      </div>
+      <div class="inner-right fr">
+        <div class="lastmintotal">
+          <p>上一分钟成交金额</p>
+          <div class="totalstring">
+            <dfn>¥</dfn>
+            <span>163,009</span>
+          </div>
+        </div>
+        <div class="totallist fl">
+          <p>总成交单量</p>
+          <span>233,790</span>
+        </div>
+        <div class="totalticket fr">
+          <p>总成交票量</p>
+          <span>233,790</span>
+        </div>
+      </div>
+    </div>
+    <div class="left-bottom">
+      <div class="linepic" id="mainTTD" style="height:382px; width:1105px; "></div>
+    </div>
+  </div>
+  <div class="right fr">
+    <div class="pie">
+      <div id="pieTTD" style="height:300px; width:243px;"></div>
+    </div>
+    <div class="hotmap">
+      <div id="hotmapTTD" style="height: 311px; width:243px;"></div>
+    </div>
+  </div>
+</section>
+<section id="chartsTICKET" class="charts none clearfix">
+  <div class="left fl">
+    <div class="left-top">
+      <div class="inner-left fl">
+        <div class="total">
+          <em class="title"><dfn>10.2</dfn>总成交金额</em>
+          <em class="datenow">12:01:06</em>
+        </div>
+        <div class="totalnum">
+          <dfn>¥</dfn>
+          <div class="htmleaf-content bgcolor-8" id="countTICKET">
+              <div class="count up changing">
+                 <span class="current top ">1</span>
+                 <span class="next top ">8</span>
+                 <span class="current bottom ">1</span>
+                 <span class="next bottom ">8</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">2</span>
+                 <span class="next top ">5</span>
+                 <span class="current bottom ">2</span>
+                 <span class="next bottom ">5</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">3</span>
+                 <span class="next top ">2</span>
+                 <span class="current bottom ">3</span>
+                 <span class="next bottom ">2</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">4</span>
+                 <span class="next top ">7</span>
+                 <span class="current bottom ">4</span>
+                 <span class="next bottom ">7</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">5</span>
+                 <span class="next top ">4</span>
+                 <span class="current bottom ">5</span>
+                 <span class="next bottom ">4</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">6</span>
+                 <span class="next top ">1</span>
+                 <span class="current bottom ">6</span>
+                 <span class="next bottom ">1</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">7</span>
+                 <span class="next top ">9</span>
+                 <span class="current bottom ">7</span>
+                 <span class="next bottom ">9</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">8</span>
+                 <span class="next top ">6</span>
+                 <span class="current bottom ">8</span>
+                 <span class="next bottom ">6</span>
+               </div>
+              
+               <div class="count up changing">
+                 <span class="current top ">9</span>
+                 <span class="next top ">3</span>
+                 <span class="current bottom ">9</span>
+                 <span class="next bottom ">3</span>
+               </div>
+          </div>
+        </div>
+        <div class="info">
+          <p>通知消息：截至中午12点销售额突破1000万！</p>
+        </div>
+      </div>
+      <div class="inner-right fr">
+        <div class="lastmintotal">
+          <p>上一分钟成交金额</p>
+          <div class="totalstring">
+            <dfn>¥</dfn>
+            <span>163,009</span>
+          </div>
+        </div>
+        <div class="totallist fl">
+          <p>总成交单量</p>
+          <span>233,790</span>
+        </div>
+        <div class="totalticket fr">
+          <p>总成交票量</p>
+          <span>233,790</span>
+        </div>
+      </div>
+    </div>
+    <div class="left-bottom">
+      <div class="linepic" id="mainTICKET" style="height:382px; width:1105px;"></div>
+    </div>
+  </div>
+  <div class="right fr">
+    <div class="pie">
+      <div id="pieTICKET" style="height:300px; width:243px;"></div>
+    </div>
+    <div class="hotmap">
+      <div id="hotmapTICKET" style="height: 311px; width:243px;"></div>
     </div>
   </div>
 </section>

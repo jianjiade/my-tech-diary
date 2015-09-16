@@ -1,3 +1,8 @@
+/*2370ba*/
+
+
+
+
 .fl{
   display: inline;
   float: left;
@@ -15,8 +20,27 @@ body{
   background: #fff;
   color: #fff;
 }
+.navlist{
+  width: 1350px;
+  margin: auto;
+  background: #000;
+}
 
-#charts{
+.deplist{
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  font: 20px/50px "微软雅黑";
+  color: #eee;
+  text-align: center;
+  text-decoration: none;
+}
+.navlist a:hover,
+.navlist .current{
+  background: #2370ba;
+}
+
+.charts{
   width: 1350px;
   margin: auto;
   background: #000;
@@ -92,6 +116,7 @@ body{
 }
 
 .info{
+  display: none;
   width: 100%;
   border-top: 1px solid #c0c0c0;
 
@@ -200,7 +225,7 @@ body{
   .count{top:70%;left:30%}
 }
 .count span {
-  background: #202020;
+  background: #2370ba;
   color: #f8f8f8;
   display: block;
   font-size: 70px;
